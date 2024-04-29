@@ -53,7 +53,7 @@ class SplashScreenActivity : ComponentActivity(){
             animationSpec = tween(1500)
             )
             delay(2000)
-            startActivity(Intent(this@SplashScreenActivity,MainActivity::class.java))
+            startActivity(Intent(this@SplashScreenActivity,LoginActivity::class.java))
         })
         Box(modifier= Modifier
             .fillMaxSize()
@@ -63,7 +63,6 @@ class SplashScreenActivity : ComponentActivity(){
             , contentAlignment = Alignment.Center) {
             Image(
                 modifier = Modifier
-                    .alpha(alpha.value)
                     .size(width = 250.dp, height = 250.dp), // Adjust width and height as needed
                 painter = painterResource(id = R.drawable.bansim),
                 contentDescription = null
