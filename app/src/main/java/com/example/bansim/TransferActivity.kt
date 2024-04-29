@@ -41,14 +41,14 @@ class TransferActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BansimTheme {
-                TransferScreen()
+                TransferScreen(this)
             }
         }
     }
 }
 @ExperimentalMaterial3Api
 @Composable
-fun TransferScreen() {
+fun TransferScreen(activity: ComponentActivity) {
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     Column(
@@ -87,7 +87,10 @@ fun TransferScreen() {
         Spacer(modifier = Modifier.height(40.dp))
 
         Button(
-            onClick = {  },
+            onClick = {
+                val intent = Intent(activity, VerifyActivity::class.java)
+                activity.startActivity(intent)
+            },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CA6A8)),
             shape = RoundedCornerShape(20.dp)
@@ -125,7 +128,7 @@ fun TransferInput(label: String, placeholder: String, keyboardType: KeyboardOpti
 @ExperimentalMaterial3Api
 @Composable
 fun PreviewTransferScreen() {
-    TransferScreen()
+    TransferScreen(ComponentActivity())
 }
 
 @ExperimentalMaterial3Api

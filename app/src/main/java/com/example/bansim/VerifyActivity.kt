@@ -1,4 +1,5 @@
 package com.example.bansim
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -66,7 +67,7 @@ fun VerifyScreen() {
                 modifier = Modifier
                     .size(24.dp)
                     .clickable {
-                        coroutineScope.launch { goBack(context, HomeActivity()) }
+                        coroutineScope.launch { goBack(context, TransferActivity()) }
                     }
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -110,7 +111,10 @@ fun VerifyScreen() {
         Spacer(modifier = Modifier.height(40.dp))
 
         Button(
-            onClick = {  },
+            onClick = {
+                val intent = Intent(context, SuccessActivity::class.java)
+                context.startActivity(intent)
+            },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CA6A8)),
             shape = RoundedCornerShape(20.dp)

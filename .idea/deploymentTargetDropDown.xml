@@ -2,16 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="HomeActivity">
+      <entry key="PreviewProfileScreen">
         <State />
       </entry>
-      <entry key="PreviewTransferScreen">
+      <entry key="PreviewSuccessScreen">
         <State />
       </entry>
       <entry key="PreviewVerifyScreen">
         <State />
       </entry>
-      <entry key="TransferActivity">
+      <entry key="SuccessActivity">
         <State />
       </entry>
       <entry key="VerifyActivity">

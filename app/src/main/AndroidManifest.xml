@@ -44,6 +44,21 @@
             android:exported="false"
             android:theme="@style/Theme.Bansim"
             />
+        <activity
+            android:name=".VerifyActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Bansim"
+            />
+        <activity
+            android:name=".SuccessActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Bansim"
+            />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Bansim"
+            />
     </application>
 
 </manifest>
