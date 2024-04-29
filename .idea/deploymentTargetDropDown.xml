@@ -8,13 +8,13 @@
       <entry key="PreviewSuccessScreen">
         <State />
       </entry>
+      <entry key="PreviewTransactionsScreen">
+        <State />
+      </entry>
       <entry key="PreviewVerifyScreen">
         <State />
       </entry>
       <entry key="SuccessActivity">
-        <State />
-      </entry>
-      <entry key="VerifyActivity">
         <State />
       </entry>
       <entry key="app">

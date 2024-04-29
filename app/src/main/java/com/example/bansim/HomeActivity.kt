@@ -137,6 +137,9 @@ fun HomeScreen(name: String, totalBalance: String, amount: String) {
                         modifier = Modifier
                             .weight(1f)
                             .padding(8.dp)
+                            .clickable {
+                                coroutineScope.launch { navigateToAnotherActivity(context,TransactionsActivity()) }
+                            }
                             .background(color = Color(0xFFFBFBFB), shape = RoundedCornerShape(15.dp))
                     ) {
                         Image(

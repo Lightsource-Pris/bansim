@@ -59,6 +59,11 @@
             android:exported="false"
             android:theme="@style/Theme.Bansim"
             />
+        <activity
+            android:name=".TransactionsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Bansim"
+            />
     </application>
 
 </manifest>
