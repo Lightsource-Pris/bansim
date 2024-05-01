@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.bansim'
+    namespace 'uk.ac.tees.mad.d3742204'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.bansim"
+        applicationId "uk.ac.tees.mad.d3742204"
         minSdk 28
         targetSdk 33
         versionCode 1
