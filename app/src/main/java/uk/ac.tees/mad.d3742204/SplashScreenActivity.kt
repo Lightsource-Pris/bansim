@@ -1,5 +1,5 @@
 // Import statements for necessary Android classes and libraries
-package com.example.bansim
+package uk.ac.tees.mad.d3742204
 
 import android.annotation.SuppressLint
 import android.content.Intent
