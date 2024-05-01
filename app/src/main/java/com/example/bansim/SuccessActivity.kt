@@ -1,9 +1,11 @@
+// Import statements for necessary Android classes and libraries
 package com.example.bansim
+
 import android.content.Intent
 import android.os.Bundle
-import androidx.compose.animation.core.Animatable
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,44 +30,59 @@ import androidx.compose.ui.unit.sp
 import com.example.bansim.ui.theme.BansimTheme
 import kotlinx.coroutines.delay
 
+// SuccessActivity class responsible for managing the success screen
 @ExperimentalMaterial3Api
 class SuccessActivity : ComponentActivity(){
     override fun onCreate(savedInstanceState : Bundle?){
         super.onCreate(savedInstanceState)
+        // Set content to display the SuccessScreen
         setContent {
             BansimTheme {
                 SuccessScreen()
             }
         }
     }
+
+    // Override onBackPressed() to prevent going back from this screen
+    override fun onBackPressed() {
+        // Do nothing
+    }
 }
 
+// Composable function to display the success screen UI
 @Composable
 @ExperimentalMaterial3Api
 private fun SuccessScreen() {
+    // Animatable to control alpha value for fading effect
     val alpha = remember {
         Animatable(0f)
     }
+    // Get the context
     val context = LocalContext.current
+    // Intent to navigate to HomeActivity
     val intent = Intent(context, HomeActivity::class.java)
 
+    // UI layout for the success screen
     Box(modifier= Modifier
         .fillMaxSize()
         .background(
             Color(0xFF4CA6A8)
         )
         , contentAlignment = Alignment.Center) {
+        // Success image
         Image(
             modifier = Modifier
                 .size(width = 80.dp, height = 80.dp), // Adjust width and height as needed
             painter = painterResource(id = R.drawable.sent),
             contentDescription = null
         )
+        // Text "Money Sent"
         Text(text = "Money Sent", color = Color.White,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold, modifier = Modifier
                 .padding(top = 140.dp)
         )
+        // Text "Successfully"
         Text(text = "Successfully", color = Color.White,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold, modifier = Modifier
@@ -73,20 +90,22 @@ private fun SuccessScreen() {
         )
     }
 
+    // Animation effect using LaunchedEffect
     LaunchedEffect(key1 = true) {
         alpha.animateTo(
             targetValue = 1f,
-            animationSpec = tween(3000)
+            animationSpec = tween(2000)
         )
-        delay(3000)
+        delay(2000)
+        // Redirect to HomeActivity after delay
         context.startActivity(intent)
     }
 }
 
+// Preview function for SuccessScreen
 @Preview
 @ExperimentalMaterial3Api
 @Composable
 fun PreviewSuccessScreen() {
     SuccessScreen()
 }
-
