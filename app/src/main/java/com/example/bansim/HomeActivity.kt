@@ -41,12 +41,16 @@ class HomeActivity : ComponentActivity() {
 @Composable
 @ExperimentalMaterial3Api
 fun HomeScreen(name: String, totalBalance: String, amount: String) {
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
     Column(modifier = Modifier.fillMaxSize()) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(
                 painter = painterResource(id = R.drawable.menu),
                 contentDescription = null,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(24.dp).clickable {
+                    coroutineScope.launch { goBack(context, ProfileActivity()) }
+                },
             )
             Spacer(modifier = Modifier.width(5.dp))
             BasicText(
@@ -102,24 +106,17 @@ fun HomeScreen(name: String, totalBalance: String, amount: String) {
                                 contentDescription = null,
                                 modifier = Modifier
                                     .height(65.dp)
-                                    .padding(10.dp)
+                                    .padding(start = 15.dp, top = 10.dp)
                                 ,
                                 contentScale = ContentScale.Crop
                             )
                             Spacer(modifier = Modifier.height(16.dp))
                             Text(
-                                text = "Send",
+                                text = "Send Money",
                                 style = MaterialTheme.typography.headlineMedium,
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier
-                                    .padding(start=10.dp)
-                            )
-                            Text(
-                                text = "Money",
-                                style = MaterialTheme.typography.headlineMedium,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .padding(start=10.dp)
+                                    .padding(start=15.dp)
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
@@ -128,49 +125,9 @@ fun HomeScreen(name: String, totalBalance: String, amount: String) {
                                 fontSize = 20.sp,
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier
-                                    .padding(start=10.dp, bottom = 5.dp)
+                                    .padding(start=15.dp, bottom = 5.dp)
                             )
                         }
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(8.dp)
-                            .background(color = Color(0xFFFBFBFB), shape = RoundedCornerShape(15.dp))
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.senddonation),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .height(65.dp)
-                                .padding(10.dp)
-                            ,
-                            contentScale = ContentScale.Crop
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = "Send",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp)
-                        )
-                        Text(
-                            text = "Donation",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp)
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Scanning Code",
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp, bottom = 5.dp)
-                        )
-                    }
 
                 }
                 Spacer(modifier = Modifier.height(40.dp))
@@ -180,6 +137,9 @@ fun HomeScreen(name: String, totalBalance: String, amount: String) {
                         modifier = Modifier
                             .weight(1f)
                             .padding(8.dp)
+                            .clickable {
+                                coroutineScope.launch { navigateToAnotherActivity(context,TransactionsActivity()) }
+                            }
                             .background(color = Color(0xFFFBFBFB), shape = RoundedCornerShape(15.dp))
                     ) {
                         Image(
@@ -187,74 +147,26 @@ fun HomeScreen(name: String, totalBalance: String, amount: String) {
                             contentDescription = null,
                             modifier = Modifier
                                 .height(65.dp)
-                                .padding(10.dp)
+                                .padding(start = 15.dp, top = 10.dp)
                             ,
                             contentScale = ContentScale.Crop
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            text = "All",
+                            text = "All Transactions",
                             style = MaterialTheme.typography.headlineMedium,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
-                                .padding(start=10.dp)
-                        )
-                        Text(
-                            text = "Transactions",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp)
+                                .padding(start=15.dp)
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "View all",
+                            text = "View all transactions",
                             style = MaterialTheme.typography.bodyLarge,
                             fontSize = 20.sp,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
-                                .padding(start=10.dp, bottom = 5.dp)
-                        )
-                    }
-
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(8.dp)
-                            .background(color = Color(0xFFFBFBFB), shape = RoundedCornerShape(15.dp))
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.allnoti),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .height(65.dp)
-                                .padding(10.dp)
-                            ,
-                            contentScale = ContentScale.Crop
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = "All",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp)
-                        )
-                        Text(
-                            text = "Notifications",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp)
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Check Messages",
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(start=10.dp, bottom = 5.dp)
+                                .padding(start=15.dp, bottom = 5.dp)
                         )
                     }
             }
